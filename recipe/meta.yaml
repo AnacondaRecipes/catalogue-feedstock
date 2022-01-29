@@ -1,5 +1,5 @@
 {% set name = "catalogue" %}
-{% set version = "2.0.4" %}
+{% set version = "2.0.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9ed345d12855af315f1715583612b26b8621a2b0a2e3bef974dc5d712f7983aa
+  sha256: 336a35603f447167042ef504114d6befa46688f03f4c14dabdc633a44587b245
 
 build:
   number: 0
