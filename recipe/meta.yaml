@@ -11,12 +11,15 @@ source:
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  skip: True  # [py<36]
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - python
     - pip
+    - setuptools
+    - wheel
   run:
     - python
     - zipp >=0.5  # [py<=37]
@@ -24,10 +27,12 @@ requirements:
 
 test:
   requires:
-    - pytest
+    - pip
+    - pytest >=4.6.5
   imports:
     - catalogue
   commands:
+    - pip check
     - python -m pytest --tb=native --pyargs {{ name }}
 
 about:
@@ -45,7 +50,7 @@ about:
       the registry. This makes the object easy to serialize, because the name
       is a simple string. If you instead saved the function, you'd have to use
       Pickle for serialization, which has many drawbacks.
-  doc_url: https://github.com/explosion/catalogue
+  doc_url: https://github.com/explosion/catalogue/blob/master/README.md
   dev_url: https://github.com/explosion/catalogue
 
 extra:
